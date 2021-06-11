@@ -1,0 +1,50 @@
+{
+  "name": "cubicle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "gts clean",
+    "start": "webpack serve --config webpack.config.js",
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production",
+    "lint": "gts lint",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
+  },
+  "dependencies": {
+    "@math.gl/core": "^3.4.3",
+    "ulid": "^2.3.0",
+    "w3c-keys": "^1.0.3",
+    "webgl-obj-loader": "^2.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@types/node": "^16.0.1",
+    "@types/object-hash": "^2.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.28.0",
+    "eslint-config-google": "^0.14.0",
+    "gltf-loader-ts": "^0.3.1",
+    "gts": "^3.1.0",
+    "javascript-obfuscator": "^2.15.5",
+    "object-hash": "^2.2.0",
+    "prettier": "^2.3.1",
+    "prettier-eslint": "^12.0.0",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-obfuscator": "^3.3.2"
+  }
+}

@@ -1,0 +1,97 @@
+{
+    "motd": "\"I believe you have my stapler\"",
+    "canvas": {
+        "id": "app",
+        "size": {
+            "width": 800,
+            "height": 600
+        }
+    },
+    "renderer": {
+        "clearColor": [0.941, 0.972, 1.0, 1.0]
+    },
+    "camera": {
+        "position": [0, 15.5, -0],
+        "lookAt": [0, 0, 0],
+        "width": 800,
+        "height": 600,
+        "zNear": 0.1,
+        "zFar": 650,
+        "fovDegrees": 65,
+        "pitch": 0,
+        "yaw": 90
+    },
+    "renderPipeline": {
+        "framebuffer": {
+            "width": 800,
+            "height": 600,
+            "attachments": [
+                {
+                    "$description": "Position XYZ [unused A]",
+                    "attachment": 0,
+                    "width": 800,
+                    "height": 600
+                },
+                {
+                    "$description": "Diffuse RGB [unused A]",
+                    "attachment": 1,
+                    "width": 800,
+                    "height": 600
+                },
+                {
+                    "$description": "Normal RGB [unused A]",
+                    "attachment": 2,
+                    "width": 800,
+                    "height": 600
+                },
+                {
+                    "$description": "Occulusion R, Metallic G, Roughness B [unused A]",
+                    "attachment": 3,
+                    "width": 800,
+                    "height": 600
+                }
+            ]
+        },
+        "stages": [
+            {
+                "name": "PBR Buffer Generation Pass",
+                "passType": "PbrBufferGenerationPass",
+                "shaderProgram": {
+                    "vertexShaderPath": "shaders/pbrBuffers.vs.glsl",
+                    "fragmentShaderPath": "shaders/pbrBuffers.fs.glsl",
+                    "attributes": [
+                        "aVertexNormal",
+                        "aTextureCoord",
+                        "aVertexPosition"
+                    ],
+                    "uniforms": [
+                        "uProjectionMatrix",
+                        "uViewMatrix",
+                        "uModelMatrix",
+                        "uDiffuseAlbedoSampler",
+                        "uNormalSampler",
+                        "uMetallicRoughnessSampler"
+                    ]
+                }
+            },
+            {
+                "name": "PBR Lighting Pass",
+                "passType": "PbrLightingPass",
+                "shaderProgram": {
+                    "vertexShaderPath": "shaders/pbrLighting.vs.glsl",
+                    "fragmentShaderPath": "shaders/pbrLighting.fs.glsl",
+                    "attributes": ["aTextureCoord", "aVertexPosition"],
+                    "uniforms": [
+                        "uLight.position",
+                        "uLight.color",
+                        "uEyePosition",
+                        "uSamplerVertexPosition",
+                        "uSamplerDiffuseAlbedo",
+                        "uSamplerNormal",
+                        "uSamplerOcclusionMetallicRoughness"
+                    ]
+                }
+            }
+        ]
+    }
+}

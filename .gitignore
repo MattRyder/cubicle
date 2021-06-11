@@ -1,0 +1,19 @@
+
+.cache/
+coverage/
+demo/
+dist/*
+!dist/index.html
+!dist/shaders
+.vscode/
+node_modules/
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
